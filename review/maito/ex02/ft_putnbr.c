@@ -1,0 +1,75 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kayoshid <kayoshid@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/11 08:01:22 by kayoshid          #+#    #+#             */
+/*   Updated: 2026/02/16 13:56:43 by kayoshid         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <unistd.h>
+
+int	count_length(int nb)
+{
+	int	i;
+
+	i = 0;
+	while (nb / 10 != 0)
+	{
+		nb = nb % 10;
+		i++;
+	}
+	return (i);
+}
+
+void	print_nb_array(int *nb_array)
+{
+	// int		i;
+	char	num_str;
+
+	// i = length;
+	while (*nb_array)
+	{
+		num_str = *nb_array + '0';
+		write(1, &num_str, 1);
+		nb_array++;
+	}
+}
+
+void	ft_putnbr(int nb)
+{
+	int	i;
+	int	length;
+	int	nb_array[64];
+
+	i = 0;
+	if (nb >= 0)
+	{
+		length = count_length(nb);
+	}
+	else
+	{
+		write(1, "-", 1);
+		nb = -nb;
+		length = count_length(nb);
+	}
+	while (nb)
+	{
+		nb_array[i] = nb % 10;
+		nb = nb / 10;
+		i++;
+	}
+	nb_array[i] = '\0';
+	print_nb_array(nb_array);
+}
+
+#include <unistd.h>
+
+int	main(void)
+{
+	ft_putnbr(6666);
+	return (0);
+}

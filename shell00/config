@@ -1,0 +1,11 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+[remote "origin"]
+	url = git@vogsphere-v2.42tokyo.jp:vogsphere/intra-uuid-ab765cc6-7c08-4c3f-8cbd-14a2865bcd61-7207525-kayoshid
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "master"]
+	remote = origin
+	merge = refs/heads/master
